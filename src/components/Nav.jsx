@@ -27,7 +27,7 @@ export default function Nav({ active, onChange, bigText, onToggleBigText, theme,
   useEffect(() => {
     let cancelled = false;
     const check = () =>
-      fetch(`${API_BASE}/health`)
+         fetch(`${API_BASE}/health`, { headers: { "ngrok-skip-browser-warning": "true" } })
         .then((r) => !cancelled && setApiOnline(r.ok))
         .catch(() => !cancelled && setApiOnline(false));
     check();
